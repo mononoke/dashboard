@@ -1,46 +1,41 @@
 <template>
-    <div class="users-table">
-        <div @click="challenge = !challenge" class="challenge">{{ challenge ? 'Hide code challenge' : 'Show code challenge' }}</div>
-        <CodeChallenge v-if="challenge"/>
+    <div class="users">
+        <Select
+            v-model="dataType"
+            :selected="dataType"
+            :options="dataTypes"
+            class="users__type"
+            placeholder="Выбрать набор данных"
+        />
 
-        <div v-else class="users">
-            <Select
-                v-model="dataType"
-                :selected="dataType"
-                :options="dataTypes"
-                class="users__type"
-                placeholder="Выбрать набор данных"
-            />
-
-            <div v-if="error">{{ error }}</div>
-            <Search v-if="users.length" class="users__filter" v-model="search" />
-            <div v-if="users.length" class="users__body">
-                <table class="users__list">
-                    <Thead :columnNames="columnNames" v-model="sort" />
-                    <tbody>
-                        <tr v-for="user in usersOnPage" :key="`${user.id}-${user.lastName}`" @click="selectedUser = user">
-                            <td>{{ user.id }}</td>
-                            <td>{{ user.firstName }}</td>
-                            <td>{{ user.lastName }}</td>
-                            <td>{{ user.email }}</td>
-                            <td>{{ user.phone }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div v-if="selectedUser.id" class="users__selected">
-                <Icon class="users__clear-selected" icon="clear" size="middle" @click="selectedUser = {}" />
-                <UserCard :user="selectedUser" />
-            </div>
-            <div v-if="pages.length > 1" class="users__pages">
-                <span
-                    v-for="p in pages"
-                    :key="p"
-                    class="users__page"
-                    :class="{ 'users__page_active': page === p}"
-                    @click="page = p"
-                >{{ p }}</span>
-            </div>
+        <div v-if="error">{{ error }}</div>
+        <Search v-if="users.length" class="users__filter" v-model="search" />
+        <div v-if="users.length" class="users__body">
+            <table class="users__list">
+                <Thead :columnNames="columnNames" v-model="sort" />
+                <tbody>
+                    <tr v-for="user in usersOnPage" :key="`${user.id}-${user.lastName}`" @click="selectedUser = user">
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.firstName }}</td>
+                        <td>{{ user.lastName }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.phone }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div v-if="selectedUser.id" class="users__selected">
+            <Icon class="users__clear-selected" icon="clear" size="middle" @click="selectedUser = {}" />
+            <UserCard :user="selectedUser" />
+        </div>
+        <div v-if="pages.length > 1" class="users__pages">
+            <span
+                v-for="p in pages"
+                :key="p"
+                class="users__page"
+                :class="{ 'users__page_active': page === p}"
+                @click="page = p"
+            >{{ p }}</span>
         </div>
     </div>
 </template>
@@ -48,7 +43,6 @@
 
 <script>
 import dynamicSort from '@/assets/dynamicSort'
-import CodeChallenge from '@/components/frontend/users_table/CodeChallenge'
 import Select from '@/components/common/Select'
 import Search from '@/components/common/Search'
 import Thead from '@/components/frontend/users_table/Thead'
@@ -74,7 +68,6 @@ const dataTypes = [
 
 export default {
     components: {
-        CodeChallenge,
         Select,
         Search,
         Thead,
@@ -83,7 +76,6 @@ export default {
     },
     data: () => {
         return {
-            challenge: false,
             columnNames,
             dataTypes,
             dataType: '',
@@ -180,18 +172,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.challenge
-    position fixed
-    top 10px
-    right 30px
-    text-decoration underline
-    text-align right
-    color: #479788
-    cursor pointer
-
-.users-table
-    height 100%
-
 .users
     display flex
     flex-direction column
