@@ -1,0 +1,8 @@
+{
+  "name": "workers-site",
+  "version": "0.0.1",
+  "dependencies": {
+    "@cloudflare/kv-asset-handler": "0.0.9"
+  },
+  "main": "index.js"
+}

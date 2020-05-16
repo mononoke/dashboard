@@ -5,14 +5,16 @@
 
 <script>
 import Vfor from '@/components/frontend/Vfor'
+import UsersTable from '@/components/frontend/users_table/UsersTable'
 
 export default {
     components: {
-        Vfor
+        Vfor,
+        UsersTable
     },
     computed: {
         component() {
-            return this.$route.params.id.toLowerCase()
+            return this.$route.params.id
         }
         // sources() {
         //     switch (this.$route.params.id) {

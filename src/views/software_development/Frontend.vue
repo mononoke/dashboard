@@ -1,6 +1,7 @@
 <template>
     <div>
         <div class="card" @click="open('vfor')">v-for: why we use key</div>
+        <div class="card" @click="open('users-table')">Code challenge</div>
     </div>
 </template>
 

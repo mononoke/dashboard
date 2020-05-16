@@ -59,7 +59,6 @@ export default {
                 // this.role === "root"
                 configuration = this.$store.state.items.rootConfiguration
             }
-            console.log('configuration', configuration, this.role)
             return configuration
         },
         keyRouterView() {

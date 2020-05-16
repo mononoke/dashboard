@@ -13,8 +13,7 @@ export default {
     watch: {
         $route: {
             immediate: true,
-            handler(to, from) {
-                console.log('WATCH::$route - to, from', to, from)
+            handler(to) {
                 switch (to.name) {
                 case "root":
                     this.goto({newState: "root"})
@@ -40,7 +39,6 @@ export default {
     // then change newState
     beforeMount() {
         this.$router.beforeEach((to, from, next) => {
-            console.log("router.beforeEach: to, from", to, from)
             // section -> section - change transition key (vertical transition)
             if (
                 from !== undefined &&

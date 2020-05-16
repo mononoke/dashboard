@@ -3,7 +3,6 @@
 // if the first name == from -> transitionBottom2Top
 
 export default function({state, commit}, {configuration, from, to}) {
-    console.log('gotoParams', configuration, from, to)
     let stop = false
 
     for (let i = 0; i < state.dashItems.length && !stop; i++) {
