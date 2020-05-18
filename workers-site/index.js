@@ -1,4 +1,4 @@
-import { getAssetFromKV, mapRequestToAsset } from '@cloudflare/kv-asset-handler'
+import { getAssetFromKV, mapRequestToAsset, serveSinglePageApp } from '@cloudflare/kv-asset-handler'
 
 /**
  * The DEBUG flag will do two things that help during development:
@@ -47,7 +47,7 @@ async function handleEvent(event) {
         if (!DEBUG) {
             try {
                 let notFoundResponse = await getAssetFromKV(event, {
-                    mapRequestToAsset: req => new Request(`${new URL(req.url).origin}/404.html`, req),
+                    mapRequestToAsset: serveSinglePageApp
                 })
 
                 return new Response(notFoundResponse.body, { ...notFoundResponse, status: 404 })
