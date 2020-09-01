@@ -74,7 +74,7 @@ export default {
                 this.$store.commit("items/setDefaultTransition", {})
                 this.$store.commit("items/resetSectionRouterViewKey", {})
             } else if (
-                // document -> module
+                // module -> document
                 from !== undefined &&
                     to.name === "document" &&
                     from.name === "module" &&
@@ -96,7 +96,7 @@ export default {
                 })
                 this.$store.commit("items/resetSectionRouterViewKey", {})
             } else if (
-                // section -> module
+                // module -> section
                 from !== undefined &&
                     to.name === "section" &&
                     from.name === "module" &&
@@ -111,7 +111,7 @@ export default {
                     size: 'small'
                 })
             } else if (
-                // section -> document
+                // document -> section
                 from !== undefined &&
                     to.name === "section" &&
                     from.name === "document" &&
@@ -120,6 +120,7 @@ export default {
                 Vue.nextTick(() => {
                     this.$store.commit("items/setDefaultTransition", {})
                 }, 0)
+                this.$store.commit('items/resetSectionRouterViewKey', {})
                 this.$store.commit("items/resize", {
                     role: 'section',
                     size: 'small'
