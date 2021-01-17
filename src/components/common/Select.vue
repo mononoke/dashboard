@@ -33,10 +33,7 @@
                 @click="focus"
             >
                 <g>
-                    <polygon
-                        fill="#479788"
-                        points="46,3.004 0,3 23.002,43 	"
-                    />
+                    <polygon points="46,3.004 0,3 23.002,43"/>
                 </g>
             </svg>
         </div>
@@ -92,6 +89,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '~@/assets/styles/colors.styl'
+
 .select-container
     position relative
     display flex
@@ -128,6 +127,8 @@ export default {
     z-index 0
     &.select__arrow_wrapper_disabled
         opacity 0.3
+    polygon
+        fill $secondary-color
 
 .select__arrow
     margin-right 5px

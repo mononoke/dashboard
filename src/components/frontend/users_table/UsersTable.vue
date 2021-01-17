@@ -5,7 +5,7 @@
             :selected="dataType"
             :options="dataTypes"
             class="users__type"
-            placeholder="Выбрать набор данных"
+            placeholder="Select dataset"
         />
 
         <div v-if="error">{{ error }}</div>
@@ -172,6 +172,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '~@/assets/styles/colors.styl'
+
 .users
     display flex
     flex-direction column
@@ -220,7 +222,7 @@ export default {
 .users__page
     height 25px
     width 25px
-    color #479788
+    color $secondary-color
     font-weight bold
     text-align center
     line-height 25px
@@ -228,6 +230,6 @@ export default {
     cursor pointer
     &.users__page_active
     &:hover
-        background-color #479788
+        background-color $secondary-color
         color #ffffff
 </style>

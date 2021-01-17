@@ -21,6 +21,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '~@/assets/styles/colors.styl'
+
 .th-sort
     cursor pointer
 
@@ -28,5 +30,5 @@ export default {
     margin 0 5px
     float right
     width 10px
-    color #479788
+    color $secondary-color
 </style>

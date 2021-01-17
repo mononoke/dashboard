@@ -28,6 +28,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '~@/assets/styles/colors.styl'
+
 .icon
     position relative
     display flex
@@ -49,5 +51,5 @@ export default {
         background-color #3c404314
 
 path
-    fill #479788
+    fill $secondary-color
 </style>

@@ -26,13 +26,15 @@ export default {
 </script>
 
 <style lang="stylus">
+@import '~@/assets/styles/colors.styl'
+
 .app__git
     position fixed
     top 5px
     right 5px
     height 34px
     width 34px
-    background-color #479788
+    background-color $secondary-color
     border-radius 50%
     cursor pointer
 

@@ -49,6 +49,8 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
+@import '~@/assets/styles/colors.styl'
+
 .dashboard-item
     display flex
     flex-direction column
@@ -72,9 +74,11 @@ export default {
     line-height normal
     font-size 1.8vw
     font-weight 400
-    color #009688
+    color $main-color
     perspective-origin 165px 56px
     transform-origin 165px 56px
+    white-space nowrap
+    text-overflow ellipsis
     overflow hidden
     &.dashboard-item__title_small
         font-size 100%

@@ -53,6 +53,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '~@/assets/styles/colors.styl'
+
 .preloader
     position fixed
     height 100vh
@@ -68,7 +70,7 @@ export default {
     width 80px
     height 80px
     border 2px solid #f3f3f3
-    border-top 3px solid #479788
+    border-top 3px solid $secondary-color
     border-radius 100%
     opacity 1
     animation spin 1s infinite linear
