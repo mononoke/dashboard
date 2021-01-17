@@ -14,7 +14,7 @@
 import {mapGetters} from "vuex"
 import model from '@/store/items/model'
 
-import Frontend from '@/views/software_development/Frontend'
+import List from '@/views/List'
 import Backend from '@/views/software_development/Backend'
 import Tab from '@/views/software_development/Tab'
 import Genre from "@/views/books/Genre"
@@ -25,7 +25,7 @@ import NotFound from "@/views/NotFound"
 export default {
     name: "Module",
     components: {
-        Frontend,
+        List,
         Backend,
         Tab,
         Genre,
