@@ -1,3 +1,1 @@
-export default (state) => {
-    return state.user
-}
+export default (state) => state.user

@@ -29,31 +29,31 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex"
+import { mapGetters } from 'vuex'
 import model from '@/store/items/model'
-import DashboardItem from "@/components/DashboardItem"
+import DashboardItem from '@/components/DashboardItem'
 
 export default {
-    name: "Dashboard",
-    components: {DashboardItem},
+    name: 'Dashboard',
+    components: { DashboardItem },
     props: {
         role: {
             type: String,
-            default: ""
-        }
+            default: '',
+        },
     },
-    data: function() {
+    data() {
         return {
             model,
-            route: String
+            route: String,
         }
     },
     computed: {
-        ...mapGetters("items", ["getItemsBySection"]),
-        ...mapGetters("user", ["getUser"]),
+        ...mapGetters('items', ['getItemsBySection']),
+        ...mapGetters('user', ['getUser']),
         configuration() {
             let configuration
-            if (this.role === "section") {
+            if (this.role === 'section') {
                 configuration = this.$store.state.items.sectionConfiguration
             } else {
                 // this.role === "root"
@@ -62,51 +62,48 @@ export default {
             return configuration
         },
         keyRouterView() {
-            if (this.role === "section") {
+            if (this.role === 'section') {
                 return this.$route.params.module
-            } else {
-                return this.$route.params.section
             }
+            return this.$route.params.section
         },
         dashItems() {
-            if (this.role === "section") {
+            if (this.role === 'section') {
                 return this.getItemsBySection(this.$route.params.section)
-            } else {
-                return this.getItemsBySection("root")
             }
+            return this.getItemsBySection('root')
         },
         dashItemsFilterByRoles() {
-            return this.dashItems.filter(d => {
+            return this.dashItems.filter((d) => {
                 if (d.requiredRole === '') {
                     // without roles
                     return true
-                } else if (this.getUser.roles.length) {
-                    return this.getUser.roles.find(r => r.name === d.requiredRole)
+                } if (this.getUser.roles.length) {
+                    return this.getUser.roles.find((r) => r.name === d.requiredRole)
                 }
             })
-
-        }
+        },
     },
     methods: {
         selectSection(name) {
             switch (this.role) {
-            case "root":
+            case 'root':
                 this.$router.push({
-                    name: "section",
-                    params: {section: name}
+                    name: 'section',
+                    params: { section: name },
                 })
                 break
-            case "section":
+            case 'section':
                 this.$router.push({
-                    name: "module",
-                    params: {module: name}
+                    name: 'module',
+                    params: { module: name },
                 })
                 break
             default:
             // WTF
             }
-        }
-    }
+        },
+    },
 }
 </script>
 

@@ -3,7 +3,7 @@
         <input
             :value="value"
             :placeholder="placeholder"
-            class="search-input__input"
+            class="search-input__value"
             ref="input"
             @input="$emit('input', $event.target.value)"
         >
@@ -19,28 +19,28 @@
 </template>
 
 <script>
-import Icon from "@/components/common/Icon"
+import Icon from '@/components/common/Icon'
 
 export default {
     components: {
-        Icon
+        Icon,
     },
     props: {
         value: {
             type: String,
-            default: ''
+            default: '',
         },
         placeholder: {
             type: String,
-            default: 'Поиск'
-        }
+            default: 'Search',
+        },
     },
     methods: {
         clear() {
             this.$refs.input.focus()
             this.$emit('input', '')
-        }
-    }
+        },
+    },
 }
 </script>
 
@@ -54,7 +54,7 @@ export default {
     border none
     box-sizing border-box
 
-.search-input__input
+.search-input__value
     display block
     padding 0 25px
     width 100%
@@ -65,13 +65,15 @@ export default {
     border none
     background-color #f1f3f4
     background-clip padding-box
-    border-radius 5px
+    border-radius 4px
     box-sizing border-box
     overflow visible
     cursor text
     &:focus
+        margin-left 1px
+        width calc(100% - 2px)
         background-color #ffffff
-        box-shadow 0 2px 4px rgba(0,0,0,0.2)
+        box-shadow 0 1px 1px 0 rgba(65,69,73,0.3), 0 1px 3px 0 rgba(65,69,73,0.15)
         outline none
 
 ::placeholder

@@ -10,43 +10,38 @@
     </tr>
 </template>
 
-
 <script>
 import SortTh from '@/components/frontend/users_table/SortTh'
 
 export default {
     components: {
-        SortTh
+        SortTh,
     },
     model: {
         prop: 'selected',
-        event: 'change'
+        event: 'change',
     },
     props: {
         columnNames: {
             type: Array,
-            default: () => {
-                return []
-            }
+            default: () => [],
         },
         selected: {
             type: Object,
-            default: () => {
-                return {
-                    name: '',
-                    type: ''
-                }
-            }
-        }
+            default: () => ({
+                name: '',
+                type: '',
+            }),
+        },
     },
     methods: {
         sort(name) {
             this.$emit('change', {
                 name,
-                type: this.selected.name !== name || this.selected.type === 'inverse' ? 'direct' : 'inverse'
+                type: this.selected.name !== name || this.selected.type === 'inverse' ? 'direct' : 'inverse',
             })
-        }
-    }
+        },
+    },
 }
 </script>
 

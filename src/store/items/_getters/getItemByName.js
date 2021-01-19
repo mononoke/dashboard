@@ -1,3 +1,1 @@
-export default state => name => {
-    return state.dashItems.find(x => x.name === name)
-}
+export default (state) => (name) => state.dashItems.find((x) => x.name === name)

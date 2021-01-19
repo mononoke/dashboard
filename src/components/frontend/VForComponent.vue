@@ -11,21 +11,19 @@ export default {
     props: {
         number: {
             type: Number,
-            default: 0
-        }
+            default: 0,
+        },
     },
-    data: () => {
-        return {
-            mountedCount: 0,
-            updatedCount: 0
-        }
-    },
+    data: () => ({
+        mountedCount: 0,
+        updatedCount: 0,
+    }),
     mounted() {
         this.mountedCount++
     },
     updated() {
         this.$refs.updated.innerText = Number(this.$refs.updated.innerText) + 1
-    }
+    },
 }
 </script>
 

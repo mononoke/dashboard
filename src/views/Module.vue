@@ -11,19 +11,19 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex"
+import { mapGetters } from 'vuex'
 import model from '@/store/items/model'
 
 import List from '@/views/List'
 import Backend from '@/views/software_development/Backend'
 import Tab from '@/views/software_development/Tab'
-import Genre from "@/views/books/Genre"
-import Book from "@/views/books/Book"
-import Mount from "@/views/Mount"
-import NotFound from "@/views/NotFound"
+import Genre from '@/views/books/Genre'
+import Book from '@/views/books/Book'
+import Mount from '@/views/Mount'
+import NotFound from '@/views/NotFound'
 
 export default {
-    name: "Module",
+    name: 'Module',
     components: {
         List,
         Backend,
@@ -31,10 +31,10 @@ export default {
         Genre,
         Book,
         Mount,
-        NotFound
+        NotFound,
     },
     computed: {
-        ...mapGetters("items", ["getItemByName"]),
+        ...mapGetters('items', ['getItemByName']),
         dashItem() {
             return this.getItemByName(this.$route.params.module)
         },
@@ -42,20 +42,18 @@ export default {
             if (this.dashItem) {
                 if (this.$route.params.id !== undefined) {
                     return this.dashItem.subComponent
-                } else {
-                    return this.dashItem.component
                 }
-            } else {
-                return 'NotFound'
+                return this.dashItem.component
             }
+            return 'NotFound'
         },
         configuration() {
             return {
                 width: `calc(${model.parentConfig.module.width}vw - ${model.sideMargin * 2}px)`,
-                right: `${model.sideMargin}px`
+                right: `${model.sideMargin}px`,
             }
-        }
-    }
+        },
+    },
 }
 </script>
 

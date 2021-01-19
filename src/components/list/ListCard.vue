@@ -12,10 +12,10 @@ export default {
             default() {
                 return {
                     text: '',
-                    path: {}
+                    path: {},
                 }
-            }
-        }
+            },
+        },
     },
     methods: {
         onClick() {
@@ -24,11 +24,11 @@ export default {
                 params: {
                     section: this.item.section,
                     module: this.item.module,
-                    id: this.item.id
-                }
+                    id: this.item.id,
+                },
             })
-        }
-    }
+        },
+    },
 }
 </script>
 

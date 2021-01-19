@@ -40,7 +40,6 @@
     </div>
 </template>
 
-
 <script>
 import dynamicSort from '@/assets/dynamicSort'
 import Select from '@/components/common/Select'
@@ -56,14 +55,14 @@ const dataTypes = [
         id: 'small',
         number: 32,
         delay: 0,
-        name: 'Small'
+        name: 'Small',
     },
     {
         id: 'big',
         number: 1000,
         delay: 3,
-        name: 'Big'
-    }
+        name: 'Big',
+    },
 ]
 
 export default {
@@ -72,24 +71,22 @@ export default {
         Search,
         Thead,
         UserCard,
-        Icon
+        Icon,
     },
-    data: () => {
-        return {
-            columnNames,
-            dataTypes,
-            dataType: '',
-            search: '',
-            sort: {
-                name: '',
-                type: ''
-            },
-            users: [],
-            page: 1,
-            selectedUser: {},
-            error: ''
-        }
-    },
+    data: () => ({
+        columnNames,
+        dataTypes,
+        dataType: '',
+        search: '',
+        sort: {
+            name: '',
+            type: '',
+        },
+        users: [],
+        page: 1,
+        selectedUser: {},
+        error: '',
+    }),
     computed: {
         filteredUsers() {
             let filteredUsers = this.users
@@ -97,28 +94,25 @@ export default {
             if (this.search) {
                 const query = this.search.toLowerCase()
 
-                filteredUsers = filteredUsers.filter(user => {
-                    return String(user.id).includes(query) ||
-                        user.firstName.toLowerCase().includes(query) ||
-                        user.lastName.toLowerCase().includes(query) ||
-                        user.email.toLowerCase().includes(query)
-                })
+                filteredUsers = filteredUsers.filter((user) => String(user.id).includes(query)
+                        || user.firstName.toLowerCase().includes(query)
+                        || user.lastName.toLowerCase().includes(query)
+                        || user.email.toLowerCase().includes(query))
             }
 
             return filteredUsers
-
         },
         usersOnPage() {
             return this.filteredUsers.filter((u, i) => i <= usersPerPage * this.page - 1 && i >= usersPerPage * (this.page - 1))
         },
         pages() {
-            let pages = []
+            const pages = []
             for (let i = 1; i <= Math.ceil(this.filteredUsers.length / usersPerPage); i++) {
                 pages.push(i)
             }
 
             return pages
-        }
+        },
     },
     watch: {
         dataType(to) {
@@ -128,7 +122,7 @@ export default {
             deep: true,
             handler(to) {
                 this.users.sort(dynamicSort(to.type, to.name))
-            }
+            },
         },
         pages(to) {
             // when we are not on the first page,
@@ -137,18 +131,18 @@ export default {
             if (to && !this.pages.includes(this.page)) {
                 this.page = this.pages.length
             }
-        }
+        },
     },
     methods: {
         getUsers(typeId) {
             this.selectedUser = {}
             this.error = ''
-            const type = this.dataTypes.find(t => t.id === typeId)
+            const type = this.dataTypes.find((t) => t.id === typeId)
             this._cancelPreloaderGetUser = this.$preloader('get_users', 'Get users')
-            let address =  `http://www.filltext.com/?rows=${type.number}&id={number|1000}&firstName={firstName}&delay=${type.delay}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&adress={addressObject}&description={lorem|32}`
+            const address = `http://www.filltext.com/?rows=${type.number}&id={number|1000}&firstName={firstName}&delay=${type.delay}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&adress={addressObject}&description={lorem|32}`
             const xhr = new XMLHttpRequest()
 
-            xhr.open("GET", address, true)
+            xhr.open('GET', address, true)
             xhr.send()
 
             xhr.onreadystatechange = () => {
@@ -158,7 +152,7 @@ export default {
                 }
 
                 if (xhr.status !== 200) {
-                    this.error = xhr.status + ': ' + xhr.statusText
+                    this.error = `${xhr.status}: ${xhr.statusText}`
                     this._cancelPreloaderGetUser()
                     return
                 }
@@ -166,8 +160,8 @@ export default {
                 this.users = JSON.parse(xhr.responseText)
                 this._cancelPreloaderGetUser()
             }
-        }
-    }
+        },
+    },
 }
 </script>
 

@@ -15,13 +15,13 @@ import Preloader from '@/components/Preloader'
 
 export default {
     components: {
-        Preloader
+        Preloader,
     },
     methods: {
         openGithub() {
             window.open('https://github.com/mononoke/dashboard', '_self')
-        }
-    }
+        },
+    },
 }
 </script>
 

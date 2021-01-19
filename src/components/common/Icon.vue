@@ -17,13 +17,13 @@ export default {
     props: {
         icon: {
             type: String,
-            default: ''
+            default: '',
         },
         size: {
             type: String,
-            default: 'middle'
-        }
-    }
+            default: 'middle',
+        },
+    },
 }
 </script>
 

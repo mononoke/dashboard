@@ -1,3 +1,3 @@
-export default function(state, {newState}) {
+export default function (state, { newState }) {
     state.navState = newState
 }

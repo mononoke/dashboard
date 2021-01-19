@@ -4,6 +4,6 @@
 
 <script>
 export default {
-    name: 'Mount'
+    name: 'Mount',
 }
 </script>

@@ -3,42 +3,40 @@
         <Button text="Unshift child" @click="unshiftChild"/>
         <h3>Without keys</h3>
         <!-- eslint-disable-next-line vue/valid-v-for -->
-        <VforComponent v-for="child in children" :number="child.number"/>
+        <VForComponent v-for="child in children" :number="child.number"/>
         <h3>With keys</h3>
-        <VforComponent v-for="child in children" :number="child.number" :key="child.id"/>
+        <VForComponent v-for="child in children" :number="child.number" :key="child.id"/>
     </div>
 </template>
 
 <script>
 import Button from '@/components/common/Button'
-import VforComponent from '@/components/frontend/VforComponent'
+import VForComponent from '@/components/frontend/VForComponent'
 
 export default {
     components: {
         Button,
-        VforComponent
+        VForComponent,
     },
     props: {
         number: {
             type: Number,
-            default: 0
-        }
+            default: 0,
+        },
     },
-    data: () => {
-        return {
-            children: [{
-                id: Math.random().toString(36).substring(7),
-                number: 1
-            }]
-        }
-    },
+    data: () => ({
+        children: [{
+            id: Math.random().toString(36).substring(7),
+            number: 1,
+        }],
+    }),
     methods: {
         unshiftChild() {
             this.children.unshift({
                 id: Math.random().toString(36).substring(7),
-                number: this.children.length + 1
+                number: this.children.length + 1,
             })
-        }
-    }
+        },
+    },
 }
 </script>

@@ -45,46 +45,42 @@ export default {
     name: 'Select',
     model: {
         prop: 'selected',
-        event: 'change'
+        event: 'change',
     },
     props: {
         selected: {
             type: String,
-            default: ''
+            default: '',
         },
         options: {
             type: Array,
-            default: () => {
-                return []
-            }
+            default: () => [],
         },
         placeholder: {
             type: String,
-            default: 'Выбор'
+            default: 'Выбор',
         },
         disabled: {
             type: Boolean,
-            default: false
-        }
+            default: false,
+        },
     },
-    data: () => {
-        return {
-            selectValue: ''
-        }
-    },
+    data: () => ({
+        selectValue: '',
+    }),
     watch: {
         selected: {
             immediate: true,
             handler(to) {
                 this.selectValue = to
-            }
-        }
+            },
+        },
     },
     methods: {
         focus() {
             this.$refs.select.focus()
-        }
-    }
+        },
+    },
 }
 </script>
 
@@ -108,8 +104,10 @@ export default {
     box-sizing border-box
     z-index 1
     &:focus
+        margin-left 1px
+        width calc(100% - 2px)
         background-color #ffffff
-        box-shadow 0 2px 4px rgba(0,0,0,0.2)
+        box-shadow 0 1px 1px 0 rgba(65,69,73,0.3), 0 1px 3px 0 rgba(65,69,73,0.15)
         outline none
 
 .select_empty
@@ -123,6 +121,7 @@ export default {
     justify-content flex-end
     width 100%
     height 100%
+    border-radius 4px
     background-color rgb(248, 248, 248)
     z-index 0
     &.select__arrow_wrapper_disabled

@@ -1,4 +1,4 @@
-export default function(state) {
-    state.rootConfiguration.routerTransitionName = "transitionRoot"
-    state.sectionConfiguration.routerTransitionName = "transitionSection"
+export default function (state) {
+    state.rootConfiguration.routerTransitionName = 'transitionRoot'
+    state.sectionConfiguration.routerTransitionName = 'transitionSection'
 }

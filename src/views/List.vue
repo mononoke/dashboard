@@ -9,12 +9,12 @@ import ListCard from '@/components/list/ListCard'
 import getList from '@/components/list/list.js'
 
 export default {
-    components: {ListCard},
+    components: { ListCard },
     computed: {
         list() {
             return getList(this.$route.params.section, this.$route.params.module)
-        }
-    }
+        },
+    },
 
 }
 </script>

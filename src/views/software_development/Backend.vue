@@ -2,9 +2,8 @@
     <div>Backend</div>
 </template>
 
-
 <script>
 export default {
-    name: 'Backend'
+    name: 'Backend',
 }
 </script>

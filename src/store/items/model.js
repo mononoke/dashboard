@@ -1,7 +1,7 @@
 const rootWidth = { // vw
     big: 100,
     middle: 20,
-    small: 10
+    small: 10,
 }
 
 // Module side margin
@@ -11,37 +11,37 @@ const parentConfig = {
     root: {
         big: {
             width: rootWidth.big,
-            left: 0
+            left: 0,
         },
         middle: {
             width: rootWidth.middle,
-            left: 0
+            left: 0,
         },
         small: {
             width: rootWidth.small,
-            left: 0
-        }
+            left: 0,
+        },
     },
     section: {
         big: {
             width: 100 - rootWidth.middle,
-            left: rootWidth.middle
+            left: rootWidth.middle,
         },
         small: {
             width: rootWidth.small,
-            left: rootWidth.small
-        }
+            left: rootWidth.small,
+        },
     },
     module: {
         width: 100 - rootWidth.small * 2,
-        left: rootWidth.small * 2
-    }
+        left: rootWidth.small * 2,
+    },
 }
 
 const hotizontalMargin = {
     big: 40,
     middle: 20,
-    small: 20
+    small: 20,
 }
 
 // number of items in a row
@@ -54,49 +54,41 @@ const itemSize = {
     },
     middle: {
         height: 80, // px
-        widthCoef: 94 // %
+        widthCoef: 94, // %
     },
     small: {
         height: 80, // px
-        widthCoef: 94 // %
-    }
+        widthCoef: 94, // %
+    },
 }
 
 const itemTransform = {
     big: {
         left: (index) => {
-            let column = (index + nx) % nx
-            let sideMargin = (100 - itemSize.big.widthCoef * 3) / 4
+            const column = (index + nx) % nx
+            const sideMargin = (100 - itemSize.big.widthCoef * 3) / 4
             return sideMargin + (sideMargin + itemSize.big.widthCoef) * column
         },
         top: (index) => {
-            let row = Math.floor(index / nx)
+            const row = Math.floor(index / nx)
             return hotizontalMargin.big + (hotizontalMargin.big + itemSize.big.height) * row
-        }
+        },
     },
     middle: {
-        left: () => {
-            return (100 - itemSize.middle.widthCoef) / 2 // %
-        },
-        top: (index) => {
-            return (hotizontalMargin.middle + itemSize.middle.height) * index + hotizontalMargin.middle
-        }
+        left: () => (100 - itemSize.middle.widthCoef) / 2, // %
+        top: (index) => (hotizontalMargin.middle + itemSize.middle.height) * index + hotizontalMargin.middle,
     },
     small: {
         // when item is small -> one item in row -> equal side margin
-        left: () => {
-            return (100 - itemSize.small.widthCoef) / 2 // %
-        },
-        top: (index) => {
-            return (hotizontalMargin.small + itemSize.small.height) * index + hotizontalMargin.small
-        }
-    }
+        left: () => (100 - itemSize.small.widthCoef) / 2, // %
+        top: (index) => (hotizontalMargin.small + itemSize.small.height) * index + hotizontalMargin.small,
+    },
 }
 
 const itemConfig = {
-    big: {...itemSize.big, ...itemTransform.big},
-    middle: {...itemSize.middle, ...itemTransform.middle},
-    small: {...itemSize.small, ...itemTransform.small}
+    big: { ...itemSize.big, ...itemTransform.big },
+    middle: { ...itemSize.middle, ...itemTransform.middle },
+    small: { ...itemSize.small, ...itemTransform.small },
 }
 
 class DashboardItem {
@@ -115,5 +107,5 @@ export default {
     sideMargin,
     parentConfig,
     itemConfig,
-    DashboardItem
+    DashboardItem,
 }

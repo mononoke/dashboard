@@ -17,8 +17,9 @@
 
 <script>
 import Vue from 'vue'
-let state = {}
-Vue.prototype.$preloader = function(key, text) {
+
+const state = {}
+Vue.prototype.$preloader = function (key, text) {
     Vue.set(state, key, text)
     return () => {
         Vue.delete(state, key)
@@ -29,26 +30,25 @@ export default {
     name: 'Preloader',
     data() {
         return {
-            state
+            state,
         }
     },
     computed: {
         preloader() {
-            let keys = Object.keys(this.state)
+            const keys = Object.keys(this.state)
 
             if (!keys.length) {
                 return {
                     show: false,
-                    text: undefined
-                }
-            } else {
-                return {
-                    show: true,
-                    text: Object.values(this.state)
+                    text: undefined,
                 }
             }
-        }
-    }
+            return {
+                show: true,
+                text: Object.values(this.state),
+            }
+        },
+    },
 }
 </script>
 

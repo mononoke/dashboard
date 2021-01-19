@@ -12,40 +12,37 @@ import Button from '@/components/common/Button'
 export default {
     components: {
         SearchInput,
-        Button
+        Button,
     },
     props: {
         search: {
             type: String,
-            default: ''
-        }
+            default: '',
+        },
     },
-    data: () => {
-        return {
-            searchText: ''
-        }
-    },
+    data: () => ({
+        searchText: '',
+    }),
     watch: {
         search: {
             immediate: true,
             handler(to) {
                 this.searchText = to
-            }
+            },
         },
         searchText(to) {
             if (!to) {
                 this.changeText()
             }
-        }
+        },
     },
     methods: {
         changeText() {
             this.$emit('input', this.searchText)
-        }
-    }
+        },
+    },
 }
 </script>
-
 
 <style lang="stylus" scoped>
 .search

@@ -10,15 +10,14 @@ export default {
     methods: {
         openBook(id) {
             this.$router.push({
-                name: "document",
+                name: 'document',
                 params: {
-                    section: "books",
+                    section: 'books',
                     module: this.$route.params.module,
-                    id: id
-                }
+                    id,
+                },
             })
-
-        }
-    }
+        },
+    },
 }
 </script>

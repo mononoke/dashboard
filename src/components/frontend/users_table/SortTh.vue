@@ -10,13 +10,13 @@ export default {
     props: {
         name: {
             type: String,
-            default: ''
+            default: '',
         },
         icon: {
             type: String,
-            default: ''
-        }
-    }
+            default: '',
+        },
+    },
 }
 </script>
 

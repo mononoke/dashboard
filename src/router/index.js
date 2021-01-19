@@ -8,44 +8,44 @@ Vue.use(VueRouter)
 
 const routes = [
     {
-        path: "",
-        name: "",
+        path: '',
+        name: '',
         component: Workspace,
         children: [
             {
-                path: "/",
-                name: "root",
+                path: '/',
+                name: 'root',
                 component: Dashboard,
-                props: {role: "root"},
+                props: { role: 'root' },
                 children: [
                     {
-                        path: ":section",
-                        name: "section",
+                        path: ':section',
+                        name: 'section',
                         component: Dashboard,
-                        props: {role: "section"},
+                        props: { role: 'section' },
                         children: [
                             {
-                                path: ":module",
-                                name: "module",
+                                path: ':module',
+                                name: 'module',
                                 component: Module,
                             },
                             {
-                                path: ":module/:id",
-                                name: "document",
-                                component: Module
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    }
+                                path: ':module/:id',
+                                name: 'document',
+                                component: Module,
+                            },
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
 ]
 
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
-    routes
+    routes,
 })
 
 export default router

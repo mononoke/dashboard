@@ -27,25 +27,22 @@ export default {
     props: {
         dashItem: {
             type: Object,
-            default: () => {
-                return {}
-            }
-        }
+            default: () => ({}),
+        },
     },
     computed: {
         active() {
             if (this.$route.name === 'root') {
                 return true
-            } else if (this.$route.name === 'section') {
+            } if (this.$route.name === 'section') {
                 return (this.$route.params.section === this.dashItem.parent || this.$route.params.section === this.dashItem.name)
-            } else {
-                return (this.dashItem.name === this.$route.params.section || this.dashItem.name === this.$route.params.module)
             }
+            return (this.dashItem.name === this.$route.params.section || this.dashItem.name === this.$route.params.module)
         },
         isCardBig() {
             return this.$route.name === this.dashItem.parent || (this.$route.name === 'section' && this.$route.params.section === this.dashItem.parent)
-        }
-    }
+        },
+    },
 }
 </script>
 <style lang="stylus" scoped>
